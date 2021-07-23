@@ -1,0 +1,219 @@
+.layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    &__img{
+        margin-right: -40%;
+        position: relative;
+        img{
+            height: 100%;
+            object-fit: cover;
+        }
+        .title{
+            position: absolute;
+            @include mid();
+            text-align: center;
+            .t1{
+                @include text(4rem, Muli,$lh-text ,white, uppercase);
+                letter-spacing: 16px;
+                padding-left: 16px;
+            }
+            .t2{
+                @include text(8rem, PDB,9rem ,white, uppercase);
+            }
+        }
+    }
+    &__content{
+        padding: 10rem 12.5rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        row-gap: 3.5rem;
+        .title{
+            @include text(4rem, PDB,$lh-text ,$text-tim, uppercase);
+        }
+        .t1{
+            @include text(1.2rem, Muli,$lh-text ,$text-xanh, uppercase);
+            letter-spacing: 4px;
+        }
+        .t3{
+            @include text(1.6rem, Muli,$lh-text ,$text-tim, uppercase);
+            letter-spacing: 6px;
+        }
+        .btn1{
+            cursor: pointer;
+            width: 19.5rem;
+            padding: 15px 20px;
+            border: 3px solid $text-xanh;
+            text-align: center;
+            @include text(1.3rem, Muli,$lh-text ,$text-tim, uppercase);
+            letter-spacing: 4px;
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 229, 88, 0.5);
+                visibility: hidden;
+                opacity: 0;
+                transition: $t;
+            }
+            &:hover::after{
+                opacity: 1;
+                visibility: visible;
+                transition: $t;
+            }
+        }
+        .out{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -16%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+            .btn{
+                cursor: pointer;
+                padding: 10px 10px;
+                border: 3px solid $text-xanh;
+            }
+            .pre{
+                transition: all $t;
+                &:hover{
+                    img{
+                        transform: translateX(-5px);
+                        transition: all $t;
+                    }
+                }
+            }
+            .next{
+                transition: all $t;
+                &:hover{
+                    img{
+                        transform: translateX(5px);
+                        transition: all $t;
+                    }
+                }
+            }
+        }
+
+    }
+    @include md{
+        .layout__content{
+            .out{
+                left: 83%;
+                top: 88%;
+            }
+        }
+    }
+    @include sm{
+        grid-template-columns: 1fr;
+        .layout__img{
+            margin-right: 0;
+        }
+        .layout__content{
+            padding: 5rem 5rem;
+            .out{
+                flex-direction: row;
+                column-gap: 10px;
+                position: initial;
+                // left: 17%;
+                // top: 93%;
+            }
+        }
+    }
+    @include xs{
+        .layout__content{
+            padding: 3rem 2rem !important;
+        }
+    }
+}
+.re{
+    .layout__content{
+        grid-area: 2/3/1/2;
+        margin-right: 0;
+        .btn1{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -30%;
+            transform: rotate(-90deg);
+        }
+    }
+    .layout__img{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        margin-left: -40%;
+        margin-right: 0;
+    }
+    @include md{
+        .layout__content{
+            .btn1{
+                position: initial;
+                transform: rotate(0deg);
+            }
+        }
+    }
+    @include sm{
+        .layout__content{
+            grid-area: initial;
+
+        }
+        .layout__img{
+            grid-area: initial;
+            margin-left: 0;
+        }
+    }
+}
+
+//content main
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 4.5rem;
+    padding-bottom: 12rem;
+    &__line{
+        height: 12rem;
+        width: 10px;
+        background: $text-xanh;
+    }
+    &__title{
+        .t1{
+            @include text(4rem, Muli,$lh-text ,$text-tim, uppercase);
+            letter-spacing: 10px;
+        }
+        .t2{
+            @include text(8rem, PDB,9.5rem ,$text-tim, uppercase);
+        }
+    }
+    &__text{
+        margin-left: 13.6rem;
+    }
+    @include md{
+        .content__text{
+            margin-left: 0;
+        }
+    }
+    @include sm{
+        flex-direction: column;
+        align-items: initial;
+        .content__line{
+            display: none;
+        }
+    }
+    @include xs{
+        .content__title{
+            .t2{
+                font-size: 5rem;
+            }
+            .t1{
+                font-size: 3rem;
+                letter-spacing: 8px;
+            }
+        }
+    }
+}
